@@ -16,7 +16,22 @@ Projet vitrine 4/6 de la convention définie dans `context/infra.md` (après `de
 
 ---
 
-## Étape 0 — Initialisation du dépôt Git
+## État d'avancement (mis à jour le 2026-08-24)
+
+Étapes 0 à 6 terminées et poussées sur `master`. **Prochaine étape à exécuter : Étape 7 (abonnement Stripe test).**
+
+Pour reprendre demain dans une nouvelle fenêtre de contexte : ouvrir une session Claude Code dans ce dossier et dire « commence la prochaine étape ». Le contexte nécessaire :
+
+- **Dépôt** : `VictorGrbz/dashboard-saas`, tout est commité et poussé jusqu'à l'Étape 6 incluse (`git log` fait foi).
+- **Direction artistique** : figée dans `DESIGN.md` (monde "Le registre à tampons" — vert de registre `#1E4D3A`, tampon rouge `#C23B22`, Source Serif 4 + IBM Plex Mono). Toujours vérifier que tout nouvel écran respecte le garde-fou anti-clichés d'Impeccable (notamment : aucun kicker/eyebrow au-dessus d'un titre, banni sans exception — déjà retiré 4 fois des mocks approuvés qui en avaient un).
+- **5 mocks approuvés** dans `.impeccable/mocks/external/` : Tarifs (construit), Connexion (construit), Dashboard (construit), Equipe (construit), **Abonnement (pas encore construit — sert de référence pour l'Étape 7)**.
+- **Supabase** : projet dédié `dashboard-saas` (ref `rfxwzbpezdvndxwcpieu`, région Paris) déjà créé et lié (`supabase link`). `.env.local` contient déjà `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY` et `SUPABASE_SERVICE_ROLE_KEY` réels — ne pas recréer de projet. Confirmation email désactivée pour la démo. Schéma `organizations`/`memberships` avec RLS appliqué (`supabase/migrations/`), rôles owner/admin/membre réellement appliqués en base (vérifié par une suite de tests directs contre la base, pas juste l'UI).
+- **Étape 7 (Stripe)** demandera probablement un nouveau compte/projet Stripe en mode test (clés `STRIPE_SECRET_KEY`/`STRIPE_WEBHOOK_SECRET`) — à créer ou demander à Victor selon ce qui est disponible en CLI/MCP, sur le même modèle que Supabase (voir comment le projet Supabase a été créé en autonomie à l'Étape 4 si un outil équivalent existe pour Stripe).
+- **Workflow établi** à chaque étape : construire sur le mock approuvé → `npx tsc --noEmit` → détecteur Impeccable (`node .claude/skills/impeccable/scripts/detect.mjs --json <fichiers>` — ou chemin complet du skill si le lien symbolique n'est pas configuré) → tester le vrai parcours au navigateur (Playwright installé temporairement avec `npm install --no-save playwright`, désinstallé après usage) → capture desktop + mobile → commit + push. Ne jamais fabriquer de données (noms, rôles, organisations) tant que la source réelle n'existe pas — préférer un champ honnêtement absent à une valeur inventée.
+
+---
+
+## Étape 0 — Initialisation du dépôt Git ✅
 
 **Objectif** : créer le dépôt Git dédié à ce projet avant tout code.
 **Fichiers concernés** : ce `PLAN.md` (premier fichier du dépôt).
@@ -27,7 +42,7 @@ Projet vitrine 4/6 de la convention définie dans `context/infra.md` (après `de
 
 ---
 
-## Étape 1 — Initialisation du projet
+## Étape 1 — Initialisation du projet ✅
 
 **Objectif** : scaffolder un projet Next.js (App Router) + TypeScript + Tailwind CSS, structure de dossiers de base.
 **Fichiers concernés** : `package.json`, `tsconfig.json`, `next.config.ts`, `eslint.config.mjs`, `postcss.config.mjs`, `src/app/layout.tsx`, `src/app/page.tsx`, `.gitignore`.
@@ -36,7 +51,7 @@ Projet vitrine 4/6 de la convention définie dans `context/infra.md` (après `de
 
 ---
 
-## Étape 2 — Direction artistique
+## Étape 2 — Direction artistique ✅
 
 **Objectif** : obtenir la direction artistique du projet avant toute mise en forme visuelle.
 **Fichiers concernés** : le prompt de Direction Artistique ci-dessous (rédigé et validé par Victor).
@@ -61,21 +76,21 @@ Projet vitrine 4/6 de la convention définie dans `context/infra.md` (après `de
 
 **Note d'exécution pour l'Artisan** : la demande à Impeccable doit être formulée comme une nouvelle direction visuelle complète (jamais une retouche locale), condition nécessaire au déclenchement de la page de décision interactive. Sans clé `OPENAI_API_KEY` configurée, Impeccable ne génère aucune vraie image en interne (uniquement palette de couleurs + description texte) — c'est le comportement normal attendu, pas un bug à signaler. C'est précisément pour ça que le brief part ensuite vers Claude Design plutôt que de compter sur la génération native d'Impeccable, gratuite via l'abonnement Pro déjà payé par Victor.
 
-### Sous-étape 2.1 — Brief de direction (Artisan)
+### Sous-étape 2.1 — Brief de direction (Artisan) ✅
 
 **Objectif** : obtenir un brief de direction confirmé (texte, pas de code, pas de maquette) via `/impeccable shape`, à partir du prompt ci-dessus.
 **Fichiers concernés** : le prompt de Direction Artistique rédigé ci-dessus.
 **Destination** : `/impeccable shape` côté Artisan.
 **Critère de fait** : prompt validé par Victor.
 
-### Sous-étape 2.2 — Maquette haute-fidélité (Victor + Claude Design)
+### Sous-étape 2.2 — Maquette haute-fidélité (Victor + Claude Design) ✅
 
 **Objectif** : Victor soumet le brief obtenu en 2.1 à Claude Design (claude.ai) pour générer une maquette haute-fidélité, itère jusqu'à validation visuelle.
 **Fichiers concernés** : image finale déposée dans `.impeccable/mocks/external/`.
 **Destination** : dossier du projet, référence pour la sous-étape suivante.
 **Critère de fait** : image validée visuellement par Victor et déposée dans le dossier.
 
-### Sous-étape 2.3 — Construction sur le mock approuvé (Artisan)
+### Sous-étape 2.3 — Construction sur le mock approuvé (Artisan) ✅ (page tarifs ; les autres mocks se construisent au fil des étapes 4-7)
 
 **Objectif** : l'Artisan reprend la main avec l'image de 2.2 comme référence approuvée et construit dessus. Impeccable traite un mock approuvé par l'utilisateur comme un contrat visuel (reproduction quasi pixel-perfect), quelle que soit son origine.
 **Fichiers concernés** : composants et pages du projet.
@@ -84,7 +99,7 @@ Projet vitrine 4/6 de la convention définie dans `context/infra.md` (après `de
 
 ---
 
-## Étape 3 — Page marketing/pricing
+## Étape 3 — Page marketing/pricing ✅
 
 **Objectif** : présenter le produit fictif et ses plans d'abonnement, dans le style livré par l'étape 2.
 **Fichiers concernés** : `src/app/page.tsx`, `src/components/pricing.tsx` (ou équivalent).
@@ -93,7 +108,7 @@ Projet vitrine 4/6 de la convention définie dans `context/infra.md` (après `de
 
 ---
 
-## Étape 4 — Authentification (Supabase)
+## Étape 4 — Authentification (Supabase) ✅
 
 **Objectif** : permettre l'inscription et la connexion d'un utilisateur via Supabase Auth.
 **Fichiers concernés** : `src/lib/supabase/{client,server}.ts`, `src/app/(auth)/login/page.tsx`, `src/app/(auth)/signup/page.tsx`, middleware de session, variables d'environnement `NEXT_PUBLIC_SUPABASE_URL` / `NEXT_PUBLIC_SUPABASE_ANON_KEY`.
@@ -102,7 +117,7 @@ Projet vitrine 4/6 de la convention définie dans `context/infra.md` (après `de
 
 ---
 
-## Étape 5 — Dashboard protégé et navigation
+## Étape 5 — Dashboard protégé et navigation ✅
 
 **Objectif** : espace applicatif protégé avec navigation (sidebar) donnant accès aux différentes sections.
 **Fichiers concernés** : `src/app/(dashboard)/layout.tsx`, `src/components/sidebar.tsx`, `src/app/(dashboard)/page.tsx`.
@@ -111,7 +126,7 @@ Projet vitrine 4/6 de la convention définie dans `context/infra.md` (après `de
 
 ---
 
-## Étape 6 — Gestion d'équipe et rôles
+## Étape 6 — Gestion d'équipe et rôles ✅
 
 **Objectif** : permettre à un owner/admin d'inviter des membres et de leur attribuer un rôle (owner/admin/membre), avec application réelle des permissions (pas juste un affichage).
 **Fichiers concernés** : `src/app/(dashboard)/team/page.tsx`, `src/lib/supabase/schema.sql` (tables `organizations`, `memberships`, politiques Row Level Security), `src/app/(dashboard)/team/actions.ts`.
@@ -120,7 +135,7 @@ Projet vitrine 4/6 de la convention définie dans `context/infra.md` (après `de
 
 ---
 
-## Étape 7 — Abonnement et facturation (Stripe test)
+## Étape 7 — Abonnement et facturation (Stripe test) ← PROCHAINE ÉTAPE
 
 **Objectif** : simuler le cycle d'abonnement (changement de plan, statut) via Stripe en mode test.
 **Fichiers concernés** : `src/app/(dashboard)/billing/page.tsx`, `src/app/api/stripe/webhook/route.ts`, `src/lib/stripe.ts`, variables d'environnement `STRIPE_SECRET_KEY` / `STRIPE_WEBHOOK_SECRET` (mode test).
