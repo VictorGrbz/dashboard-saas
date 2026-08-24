@@ -40,7 +40,7 @@ function StampBadge() {
         />
       </svg>
       <p className="font-mono text-sm font-semibold tracking-[0.15em]">ESSAI 14 JOURS</p>
-      <p className="mt-1 font-mono text-[10px] leading-snug tracking-[0.1em]">
+      <p className="mt-1 font-mono text-caption">
         ENTRÉE AUTORISÉE
         <br />
         SANS CARTE BANCAIRE
@@ -71,7 +71,7 @@ const PLANS: Plan[] = [
     name: "Solo",
     price: "0 €",
     priceNote: "1 siège · sans limite de durée",
-    cta: { label: "Ouvrir un registre", href: "/login", variant: "outline" },
+    cta: { label: "Ouvrir un registre", href: "/signup", variant: "outline" },
   },
   {
     id: "equipe",
@@ -79,7 +79,7 @@ const PLANS: Plan[] = [
     price: "12 €",
     priceNote: "par membre / mois · 3 sièges min.",
     highlighted: true,
-    cta: { label: "Démarrer l'essai", href: "/login", variant: "filled" },
+    cta: { label: "Démarrer l'essai", href: "/signup", variant: "filled" },
   },
   {
     id: "etude",
@@ -131,7 +131,7 @@ export default function Home() {
             <span className="block font-mono text-sm font-semibold tracking-[0.15em]">
               CREWBASE
             </span>
-            <span className="block font-mono text-[10px] tracking-[0.2em] text-paper/70">
+            <span className="block font-mono text-caption text-paper/70">
               REGISTRE D&apos;ÉQUIPE
             </span>
           </a>
@@ -171,7 +171,7 @@ export default function Home() {
             aria-hidden="true"
             className="hidden w-10 shrink-0 border-r border-border pt-24 md:flex md:justify-center"
           >
-            <span className="[writing-mode:vertical-rl] rotate-180 font-mono text-[10px] tracking-[0.2em] text-ink-muted">
+            <span className="[writing-mode:vertical-rl] rotate-180 font-mono text-caption text-ink-muted">
               ÉCRITURE N° 2026-0417 · FOLIO 03
             </span>
           </aside>
@@ -192,7 +192,7 @@ export default function Home() {
 
               <div className="flex flex-col items-start gap-4 md:items-end">
                 <StampBadge />
-                <p className="max-w-[15rem] font-mono text-[10px] leading-relaxed text-ink-muted md:text-right">
+                <p className="max-w-[15rem] font-mono text-caption text-ink-muted md:text-right">
                   Portée du registre : 1 organisation, sièges illimités en lecture,
                   journal d&apos;audit conservé 12 mois.
                 </p>
@@ -219,7 +219,7 @@ export default function Home() {
                           {plan.name.toUpperCase()}
                         </span>
                         <span className="mt-2 block font-serif text-3xl">{plan.price}</span>
-                        <span className="mt-2 block font-mono text-[10px] leading-snug tracking-[0.05em] text-paper/70">
+                        <span className="mt-2 block font-mono text-caption text-paper/70">
                           {plan.priceNote}
                         </span>
                       </th>
@@ -253,7 +253,7 @@ export default function Home() {
                 </tbody>
                 <tfoot>
                   <tr>
-                    <td className="border-t border-border px-5 py-4 align-top font-mono text-[10px] leading-relaxed text-ink-muted">
+                    <td className="border-t border-border px-5 py-4 align-top font-mono text-caption text-ink-muted">
                       Prix hors taxes. Toute modification de plan crée une écriture au
                       registre.
                     </td>
@@ -295,7 +295,7 @@ export default function Home() {
       </main>
 
       <footer className="bg-ink text-paper">
-        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-6 py-5 font-mono text-[10px] tracking-[0.1em] text-paper/70 sm:flex-row sm:items-center sm:justify-between md:px-12">
+        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-6 py-5 font-mono text-caption text-paper/70 sm:flex-row sm:items-center sm:justify-between md:px-12">
           <span>CREWBASE · REGISTRE D&apos;ÉQUIPE</span>
           <span>DONNÉES DE DÉMONSTRATION · AUCUN CLIENT RÉEL</span>
         </div>
