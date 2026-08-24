@@ -58,7 +58,8 @@
       "title": { "displayName": "Title", "purpose": "Section and value-prop subheads." },
       "body": { "displayName": "Body", "purpose": "Supporting prose paragraphs, capped near 55-65ch." },
       "label": { "displayName": "Label", "purpose": "Nav items, button text, plan names, stamp headline — uppercase tracked mono." },
-      "data": { "displayName": "Data", "purpose": "Table cell values, price sub-notes, footer legal line." }
+      "data": { "displayName": "Data", "purpose": "Table cell values." },
+      "caption": { "displayName": "Caption", "purpose": "Marginal/tertiary annotation: folio-rail entry number, header wordmark subtitle, stamp fine print, price scope notes, table footer legal line, footer bar." }
     },
     "shadows": [],
     "motion": [],

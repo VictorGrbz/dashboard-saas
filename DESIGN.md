@@ -36,6 +36,11 @@ typography:
     fontSize: "0.75rem"
     fontWeight: 400
     letterSpacing: "0.05em"
+  caption:
+    fontFamily: "IBM Plex Mono, ui-monospace, monospace"
+    fontSize: "0.625rem"
+    fontWeight: 400
+    letterSpacing: "0.1em"
 spacing:
   sm: "0.75rem"
   md: "1.25rem"
@@ -115,7 +120,8 @@ The palette is two committed registers: a green-and-white ledger surface, and a 
 - **Title** (400, 1.25rem/20px, serif): value-prop and section subheads.
 - **Body** (400, 1rem/16px, 1.625 line-height, serif): supporting paragraph copy, capped near max-w-md/max-w-xl containers (~55–65ch).
 - **Label** (600, 0.75rem/12px, 0.15em tracking, mono, uppercase): nav items, buttons, plan names, stamp headline text.
-- **Data** (400, 0.75rem/12px, 0.05em tracking, mono): table cell values, price sub-notes, footer legal line — not bolded unless it's a stamped affirmative ("Oui" is bold + stamp-red).
+- **Data** (400, 0.75rem/12px, 0.05em tracking, mono): table cell values — not bolded unless it's a stamped affirmative ("Oui" is bold + stamp-red).
+- **Caption** (400, 0.625rem/10px, 0.1em tracking, mono, often at reduced opacity via `text-*-muted` or `/70`): marginal or tertiary annotation one step below Data — folio-rail entry number, header wordmark subtitle, stamp fine print, price scope notes, table footer legal line, footer bar. Never carries a primary value or an affirmative/negative state; those stay at Data or larger.
 
 ### Named Rules
 **The Record Is Mono Rule.** Anything that functions as a record — a table cell, a number, a nav label, a legal/provenance line, an entry number — renders in IBM Plex Mono. Anything that is authored prose — headline, body paragraph, section title — renders in Source Serif 4. Mixing the two inside one text run doesn't happen.

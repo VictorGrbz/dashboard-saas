@@ -171,7 +171,7 @@ export default function Home() {
             aria-hidden="true"
             className="hidden w-10 shrink-0 border-r border-border pt-24 md:flex md:justify-center"
           >
-            <span className="[writing-mode:vertical-rl] rotate-180 font-mono text-[11px] tracking-[0.2em] text-ink-muted">
+            <span className="[writing-mode:vertical-rl] rotate-180 font-mono text-[10px] tracking-[0.2em] text-ink-muted">
               ÉCRITURE N° 2026-0417 · FOLIO 03
             </span>
           </aside>
@@ -192,7 +192,7 @@ export default function Home() {
 
               <div className="flex flex-col items-start gap-4 md:items-end">
                 <StampBadge />
-                <p className="max-w-[15rem] font-mono text-[11px] leading-relaxed text-ink-muted md:text-right">
+                <p className="max-w-[15rem] font-mono text-[10px] leading-relaxed text-ink-muted md:text-right">
                   Portée du registre : 1 organisation, sièges illimités en lecture,
                   journal d&apos;audit conservé 12 mois.
                 </p>
