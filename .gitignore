@@ -36,6 +36,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# impeccable (état d'interaction éphémère, pas la source du design)
+.impeccable/questions/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
