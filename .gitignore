@@ -38,6 +38,7 @@ yarn-error.log*
 
 # impeccable (état d'interaction éphémère, pas la source du design)
 .impeccable/questions/
+.impeccable/review/
 
 # typescript
 *.tsbuildinfo

@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-24T16:28:38+02:00",
+  "title": "Design System: Crewbase",
+  "extensions": {
+    "colorMeta": {
+      "ledger": {
+        "role": "primary",
+        "displayName": "Ledger Green",
+        "canonical": "#1E4D3A",
+        "tonalRamp": ["#0C1F17", "#123324", "#1E4D3A", "#2C6B50", "#4C8B6E", "#7CAE93", "#B4D1C0", "#EAF3EE"]
+      },
+      "stamp": {
+        "role": "secondary",
+        "displayName": "Stamp Red",
+        "canonical": "#C23B22",
+        "tonalRamp": ["#3D0F06", "#661A0D", "#912515", "#C23B22", "#D66748", "#E4927A", "#F1BCAD", "#FBE6DF"]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#14202B",
+        "tonalRamp": ["#050809", "#0C1319", "#14202B", "#26394A", "#465C71", "#758699", "#AEB9C4", "#DEE3E8"]
+      },
+      "ink-muted": {
+        "role": "neutral",
+        "displayName": "Muted Ink",
+        "canonical": "#60726F",
+        "tonalRamp": ["#202726", "#333D3B", "#495452", "#60726F", "#7C8C89", "#9DABA8", "#C4CECC", "#E8EDEC"]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "canonical": "#FDFDFB",
+        "tonalRamp": ["#B8B8B0", "#CACAC3", "#DCDCD6", "#EDEDE9", "#FDFDFB", "#FEFEFD", "#FFFFFF", "#FFFFFF"]
+      },
+      "ledger-tint": {
+        "role": "neutral",
+        "displayName": "Ledger Tint",
+        "canonical": "#F2F7F3",
+        "tonalRamp": ["#B4C9BC", "#C7D9CE", "#DAE8E0", "#ECF3EE", "#F2F7F3", "#F7FAF8", "#FBFDFC", "#FFFFFF"]
+      },
+      "paper-margin": {
+        "role": "neutral",
+        "displayName": "Paper Margin",
+        "canonical": "#E7E3D8",
+        "tonalRamp": ["#8C8672", "#A29B85", "#B8B098", "#D2CBB6", "#E7E3D8", "#EFEDE5", "#F6F5F0", "#FBFAF8"]
+      },
+      "border": {
+        "role": "neutral",
+        "displayName": "Hairline Border",
+        "canonical": "#DDDFE0",
+        "tonalRamp": ["#5A5C5D", "#77797A", "#96989A", "#BCBEBF", "#DDDFE0", "#E9EAEB", "#F3F4F4", "#FAFAFA"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero thesis statement only." },
+      "title": { "displayName": "Title", "purpose": "Section and value-prop subheads." },
+      "body": { "displayName": "Body", "purpose": "Supporting prose paragraphs, capped near 55-65ch." },
+      "label": { "displayName": "Label", "purpose": "Nav items, button text, plan names, stamp headline — uppercase tracked mono." },
+      "data": { "displayName": "Data", "purpose": "Table cell values, price sub-notes, footer legal line." }
+    },
+    "shadows": [],
+    "motion": [],
+    "breakpoints": [
+      { "name": "md", "value": "768px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Highest-commitment CTA (start trial / filled pricing CTA).",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">DÉMARRER L'ESSAI</a>",
+      "css": ".ds-btn-primary { display: inline-block; background: var(--color-stamp); color: var(--color-paper); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-align: center; padding: 8px 16px; border: 1px solid var(--color-stamp); text-decoration: none; } .ds-btn-primary:hover { background: color-mix(in srgb, var(--color-stamp) 90%, black); } .ds-btn-primary:focus-visible { outline: 2px solid var(--color-stamp); outline-offset: 2px; }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Secondary CTA (open a free register / lower-commitment plans).",
+      "html": "<a class=\"ds-btn-outline\" href=\"#\">OUVRIR UN REGISTRE</a>",
+      "css": ".ds-btn-outline { display: inline-block; background: transparent; color: var(--color-ink); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-align: center; padding: 8px 16px; border: 1px solid var(--color-ink); text-decoration: none; transition: background 0.15s, color 0.15s; } .ds-btn-outline:hover { background: var(--color-ink); color: var(--color-paper); } .ds-btn-outline:focus-visible { outline: 2px solid var(--color-stamp); outline-offset: 2px; }"
+    },
+    {
+      "name": "Pricing Table",
+      "kind": "custom",
+      "refersTo": "table-header",
+      "description": "Bordered comparison table with ledger-green header row and zebra-striped mono data rows; highlighted plan gets a stamp-red top border and side rules.",
+      "html": "<table class=\"ds-ledger-table\"><thead><tr><th></th><th class=\"ds-th-highlight\">ÉQUIPE<br><span class=\"ds-price\">12 €</span></th><th>ÉTUDE<br><span class=\"ds-price\">29 €</span></th></tr></thead><tbody><tr><th scope=\"row\">Membres invités</th><td class=\"ds-highlight\">25</td><td>Illimité</td></tr><tr class=\"ds-row-tint\"><th scope=\"row\">Permissions en base (RLS)</th><td class=\"ds-highlight ds-yes\">Oui</td><td class=\"ds-yes\">Oui</td></tr></tbody></table>",
+      "css": ".ds-ledger-table { width: 100%; border-collapse: collapse; font-family: var(--font-mono); font-size: 0.75rem; border: 1px solid var(--color-border); } .ds-ledger-table th, .ds-ledger-table td { padding: 12px 20px; text-align: left; border-top: 1px solid var(--color-border); } .ds-ledger-table thead th { background: var(--color-ledger); color: var(--color-paper); font-weight: 600; letter-spacing: 0.05em; vertical-align: top; padding: 16px 20px; } .ds-th-highlight { border-top: 4px solid var(--color-stamp) !important; } .ds-price { display: block; margin-top: 8px; font-family: var(--font-serif); font-size: 1.5rem; font-weight: 400; } .ds-row-tint { background: var(--color-ledger-tint); } .ds-highlight { border-left: 1px solid var(--color-border); border-right: 1px solid var(--color-border); } .ds-yes { font-weight: 600; color: var(--color-stamp); }"
+    },
+    {
+      "name": "Stamp Badge",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Rotated ink-bleed certification stamp; the system's one bespoke, hand-marked device, reserved for genuine validation states.",
+      "html": "<div class=\"ds-stamp\"><svg aria-hidden=\"true\" class=\"ds-stamp-svg\" viewBox=\"0 0 200 90\" preserveAspectRatio=\"none\"><defs><filter id=\"ds-stamp-ink\" x=\"-30%\" y=\"-30%\" width=\"160%\" height=\"160%\"><feTurbulence type=\"fractalNoise\" baseFrequency=\"0.045 0.09\" numOctaves=\"3\" seed=\"9\" result=\"noise\"/><feDisplacementMap in=\"SourceGraphic\" in2=\"noise\" scale=\"7\" xChannelSelector=\"R\" yChannelSelector=\"G\"/></filter></defs><rect x=\"6\" y=\"6\" width=\"188\" height=\"78\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" filter=\"url(#ds-stamp-ink)\"/></svg><p class=\"ds-stamp-label\">ESSAI 14 JOURS</p><p class=\"ds-stamp-sub\">ENTRÉE AUTORISÉE<br>SANS CARTE BANCAIRE</p></div>",
+      "css": ".ds-stamp { position: relative; transform: rotate(-3deg); padding: 16px 24px; text-align: center; color: var(--color-stamp); } .ds-stamp-svg { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; overflow: visible; } .ds-stamp-label { font-family: var(--font-mono); font-size: 0.875rem; font-weight: 600; letter-spacing: 0.15em; } .ds-stamp-sub { margin-top: 4px; font-family: var(--font-mono); font-size: 0.625rem; letter-spacing: 0.1em; line-height: 1.3; }"
+    },
+    {
+      "name": "Header Navigation",
+      "kind": "nav",
+      "refersTo": null,
+      "description": "Full-bleed ledger-green header bar with mono nav labels; disabled/roadmap items shown at reduced opacity rather than removed.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-link\" href=\"#\">TARIFS</a><span class=\"ds-nav-link ds-nav-disabled\" aria-disabled=\"true\">DOCUMENTATION</span></nav>",
+      "css": ".ds-nav { display: flex; gap: 32px; background: var(--color-ledger); padding: 20px; } .ds-nav-link { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.15em; color: color-mix(in srgb, var(--color-paper) 85%, transparent); text-decoration: none; } .ds-nav-link:hover { color: var(--color-paper); } .ds-nav-link:focus-visible { outline: 2px solid var(--color-stamp); outline-offset: 2px; } .ds-nav-disabled { color: color-mix(in srgb, var(--color-paper) 40%, transparent); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Le registre à tampons",
+    "overview": "Crewbase reads as a notarial ledger, not a SaaS marketing page. The world's governing idea is that every plan, role, and invoice is a numbered ledger entry: nothing changes silently, everything is stamped. This lands as a deep-green-and-white register (bandes vertes et blanches), blue-black ink for text and rule lines, and a red stamp reserved for status and validation. The color strategy is committed, not decorative: green carries the page, red interrupts it to mean something.\n\nThe build rejects the generic SaaS vocabulary on purpose: no purple/blue gradients, no stock growth-chart or rocket illustration, no untouched Tailwind-UI layout, no instrument-panel chrome (dials, gauges — reserved by a sibling portfolio identity). Density comes from a strict monospace grid for tabular data, borrowed from high-density Japanese web layout and BBS/ANSI table conventions: hard column rules, no card shadows, no soft elevation.",
+    "keyCharacteristics": [
+      "Ledger green + near-white paper carry the page; stamp red is the only status/validation signal.",
+      "Serif for prose and headlines, tabular monospace for anything that is data, a label, or a number.",
+      "Flat throughout — no box-shadow anywhere in the shipped CSS; depth is conveyed by rules, fills, and the stamp device, not by elevation.",
+      "Sequential entry numbering (folio/écriture numbers, \"01/02/03\" value props) is the recurring signature, not a one-off flourish."
+    ],
+    "rules": [
+      { "name": "The One Stamp Rule", "body": "Stamp red never appears as page decoration. It only marks a status, a validation, an affirmative, or an interactive commit point (trial badge, \"Oui\", highlighted-plan accent, filled CTA, selection/focus). If a use of stamp red isn't state, it's wrong.", "section": "colors" },
+      { "name": "The Record Is Mono Rule", "body": "Anything that functions as a record — a table cell, a number, a nav label, a legal/provenance line, an entry number — renders in IBM Plex Mono. Anything that is authored prose — headline, body paragraph, section title — renders in Source Serif 4. Mixing the two inside one text run doesn't happen.", "section": "typography" },
+      { "name": "The No-Shadow Rule", "body": "Surfaces do not lift. A ledger page lies flat on a desk; nothing here casts a shadow. Emphasis is built with fill, rule lines, and the stamp, not with box-shadow or blur.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do render anything tabular, numeric, or record-like in IBM Plex Mono with wide tracking; reserve Source Serif 4 for authored prose and headlines.",
+      "Do keep every corner square (0px radius) — buttons, tables, badges, containers.",
+      "Do use --color-stamp only for state (validation, affirmative, highlighted commitment, selection/focus) — never as page decoration.",
+      "Do build tabular data as real <table> markup with a bordered frame and zebra rows, not simulated grid/flex layouts.",
+      "Do keep the page flat: no box-shadow, no blur, no card elevation."
+    ],
+    "donts": [
+      "Don't add gradients, especially purple/blue SaaS gradients — confirmed anti-reference in the direction contract.",
+      "Don't add card shadows or rounded corners to any container — the register is flat and square by invariant, not by oversight.",
+      "Don't add instrument-panel chrome (dials, gauges, cockpit framing) — explicitly reserved by a sibling portfolio identity and excluded from this world.",
+      "Don't fabricate social proof (client logos, testimonials, traction numbers) on marketing surfaces — a durable PRODUCT.md commitment, not a style preference.",
+      "Don't apply the stamp's ink-bleed/turbulence distortion to any element other than a genuine certification mark; it is not a general-purpose border texture."
+    ]
+  }
+}
